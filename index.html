@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Marcela Voltolino de Oliveira</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --p50:  #EEEDFE;
+      --p100: #CECBF6;
+      --p200: #AFA9EC;
+      --p400: #7F77DD;
+      --p600: #534AB7;
+      --p800: #3C3489;
+      --p900: #26215C;
+      --t50:  #E1F5EE;
+      --t400: #1D9E75;
+      --t600: #0F6E56;
+      --radius-sm: 8px;
+      --radius-md: 14px;
+      --radius-lg: 22px;
+      --radius-xl: 32px;
+    }
+
+    body {
+      font-family: 'Inter', system-ui, sans-serif;
+      background: #0e0b1e;
+      color: #f0eeff;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    /* ── HERO ── */
+    .hero {
+      width: 100%;
+      padding: 4rem 1.5rem 3.5rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 70% 60% at 50% -10%, #4f38c2 0%, transparent 70%),
+        radial-gradient(ellipse 40% 40% at 80% 80%, #1d9e75 0%, transparent 60%);
+      opacity: 0.45;
+      pointer-events: none;
+    }
+
+    .hero-inner { position: relative; z-index: 1; }
+
+    .avatar-ring {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 84px;
+      height: 84px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--p400), var(--t400));
+      margin-bottom: 1.5rem;
+      box-shadow: 0 0 0 6px rgba(127,119,221,0.18);
+    }
+
+    .avatar-ring span {
+      font-size: 26px;
+      font-weight: 700;
+      color: #fff;
+      letter-spacing: -1px;
+    }
+
+    .hero h1 {
+      font-size: clamp(1.6rem, 4vw, 2.2rem);
+      font-weight: 700;
+      color: #fff;
+      letter-spacing: -0.02em;
+      margin-bottom: 0.5rem;
+    }
+
+    .hero p {
+      font-size: 0.95rem;
+      color: rgba(240,238,255,0.6);
+      font-weight: 400;
+    }
+
+    .badge {
+      display: inline-block;
+      margin-bottom: 1.2rem;
+      background: rgba(127,119,221,0.2);
+      border: 1px solid rgba(127,119,221,0.35);
+      color: var(--p200);
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 0.3rem 0.9rem;
+      border-radius: 999px;
+    }
+
+    /* ── MAIN ── */
+    main {
+      width: 100%;
+      max-width: 520px;
+      padding: 2rem 1.25rem 4rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1.5rem;
+    }
+
+    /* ── BOTÃO ── */
+    #start-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: linear-gradient(135deg, var(--p600), var(--p400));
+      color: #fff;
+      border: none;
+      border-radius: 999px;
+      padding: 0.9rem 2.2rem;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      letter-spacing: 0.01em;
+      transition: opacity 0.18s, transform 0.12s;
+      box-shadow: 0 8px 28px rgba(83,74,183,0.55), 0 2px 6px rgba(0,0,0,0.4);
+      font-family: inherit;
+    }
+
+    #start-btn:hover  { opacity: 0.88; }
+    #start-btn:active { transform: scale(0.97); }
+    #start-btn:disabled {
+      background: linear-gradient(135deg, #3a3060, #4a4490);
+      cursor: default;
+      box-shadow: none;
+      opacity: 0.7;
+    }
+
+    .btn-icon { width: 18px; height: 18px; flex-shrink: 0; }
+
+    /* ── CARD COMPARTILHADO ── */
+    .card {
+      width: 100%;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: var(--radius-lg);
+      padding: 1.5rem;
+      backdrop-filter: blur(10px);
+    }
+
+    .card-label {
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(240,238,255,0.4);
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 7px;
+    }
+
+    .dot-live {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #4ade80;
+      box-shadow: 0 0 0 3px rgba(74,222,128,0.2);
+      animation: pulse 2s infinite;
+      flex-shrink: 0;
+    }
+
+    @keyframes pulse {
+      0%, 100% { box-shadow: 0 0 0 3px rgba(74,222,128,0.2); }
+      50%       { box-shadow: 0 0 0 6px rgba(74,222,128,0.08); }
+    }
+
+    /* ── WEBCAM ── */
+    #webcam-card { display: none; }
+    #webcam-card.visible { display: block; }
+
+    #webcam-container {
+      display: flex;
+      justify-content: center;
+    }
+
+    #webcam-container canvas {
+      border-radius: var(--radius-md);
+      display: block;
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+
+    /* ── RESULTADOS ── */
+    #results-card { display: none; }
+    #results-card.visible { display: block; }
+
+    .class-row { margin-bottom: 1rem; }
+    .class-row:last-child { margin-bottom: 0; }
+
+    .class-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 7px;
+    }
+
+    .class-name {
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: rgba(240,238,255,0.85);
+    }
+
+    .class-pct {
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--p200);
+      font-variant-numeric: tabular-nums;
+      transition: color 0.2s;
+    }
+
+    .class-pct.top { color: #a78bfa; }
+
+    .bar-track {
+      width: 100%;
+      height: 8px;
+      background: rgba(255,255,255,0.07);
+      border-radius: 999px;
+      overflow: hidden;
+    }
+
+    .bar-fill {
+      height: 100%;
+      border-radius: 999px;
+      background: rgba(127,119,221,0.45);
+      width: 0%;
+      transition: width 0.25s ease;
+    }
+
+    .bar-fill.top {
+      background: linear-gradient(90deg, var(--p400), #a78bfa);
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      padding: 1.5rem;
+      font-size: 0.78rem;
+      color: rgba(240,238,255,0.3);
+      text-align: center;
+      letter-spacing: 0.02em;
+    }
+  </style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="hero-inner">
+    <div class="avatar-ring"><span>MV</span></div>
+    <div class="badge">Teachable Machine · TensorFlow.js</div>
+    <h1>Marcela Voltolino de Oliveira</h1>
+    <p>Reconhecimento de padrões em tempo real com IA</p>
+  </div>
+</div>
+
+<main>
+
+  <button id="start-btn" onclick="init()">
+    <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M15 10l-4 4-4-4"/>
+      <rect x="2" y="3" width="20" height="14" rx="2"/>
+      <path d="M8 21h8M12 17v4"/>
+    </svg>
+    Iniciar câmera
+  </button>
+
+  <div class="card" id="webcam-card">
+    <div class="card-label">
+      <span class="dot-live"></span>
+      Câmera ao vivo
+    </div>
+    <div id="webcam-container"></div>
+  </div>
+
+  <div class="card" id="results-card">
+    <div class="card-label">Correspondência por classe</div>
+    <div id="label-container"></div>
+  </div>
+
+</main>
+
+<footer>Programação Assistida com IA · GitHub Pages</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@latest/dist/tf.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@teachablemachine/image@latest/dist/teachablemachine-image.min.js"></script>
+<script>
+  const URL = "https://teachablemachine.withgoogle.com/models/SEU_MODELO_AQUI/";
+  let model, webcam, maxPredictions;
+  let barFills = [], pctLabels = [], nameLabels = [];
+
+  async function init() {
+    const btn = document.getElementById("start-btn");
+    btn.disabled = true;
+    btn.innerHTML = `<svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg> Carregando modelo…`;
+
+    const modelURL    = URL + "model.json";
+    const metadataURL = URL + "metadata.json";
+    model          = await tmImage.load(modelURL, metadataURL);
+    maxPredictions = model.getTotalClasses();
+
+    webcam = new tmImage.Webcam(224, 224, true);
+    await webcam.setup();
+    await webcam.play();
+    window.requestAnimationFrame(loop);
+
+    document.getElementById("webcam-container").appendChild(webcam.canvas);
+    document.getElementById("webcam-card").classList.add("visible");
+
+    const lc = document.getElementById("label-container");
+    lc.innerHTML = "";
+    barFills = []; pctLabels = []; nameLabels = [];
+
+    for (let i = 0; i < maxPredictions; i++) {
+      const row = document.createElement("div");
+      row.className = "class-row";
+
+      const hdr = document.createElement("div");
+      hdr.className = "class-header";
+
+      const nm = document.createElement("span");
+      nm.className = "class-name";
+      nm.textContent = "Classe " + (i + 1);
+
+      const pt = document.createElement("span");
+      pt.className = "class-pct";
+      pt.textContent = "0%";
+
+      hdr.appendChild(nm); hdr.appendChild(pt);
+
+      const track = document.createElement("div");
+      track.className = "bar-track";
+      const fill = document.createElement("div");
+      fill.className = "bar-fill";
+      track.appendChild(fill);
+
+      row.appendChild(hdr); row.appendChild(track);
+      lc.appendChild(row);
+
+      barFills.push(fill); pctLabels.push(pt); nameLabels.push(nm);
+    }
+
+    document.getElementById("results-card").classList.add("visible");
+
+    btn.innerHTML = `<svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="9 12 11 14 15 10"/></svg> Câmera ativa`;
+  }
+
+  async function loop() {
+    webcam.update();
+    await predict();
+    window.requestAnimationFrame(loop);
+  }
+
+  async function predict() {
+    const prediction = await model.predict(webcam.canvas);
+
+    let topIdx = 0;
+    for (let i = 1; i < maxPredictions; i++) {
+      if (prediction[i].probability > prediction[topIdx].probability) topIdx = i;
+    }
+
+    for (let i = 0; i < maxPredictions; i++) {
+      const pct = Math.round(prediction[i].probability * 100);
+      nameLabels[i].textContent = prediction[i].className;
+      pctLabels[i].textContent  = pct + "%";
+      pctLabels[i].className    = "class-pct" + (i === topIdx ? " top" : "");
+      barFills[i].style.width   = pct + "%";
+      barFills[i].className     = "bar-fill" + (i === topIdx ? " top" : "");
+    }
+  }
+</script>
+
+</body>
+</html>
